@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Home-field advantage in the NFL: NFC and AFC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F1F4F0; --surface:#FFFFFF; --ink:#16231B; --muted:#4E5E54; --line:#D3DCD5;
+  --field:#1E5631; --field-ink:#F4F8F4; --nfc:#1B3A6B; --afc:#A3231C;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1611; --surface:#16211A; --ink:#E6EDE7; --muted:#A3B3A8; --line:#2A3A30;
+    --field:#173F25; --field-ink:#EAF2EC; --nfc:#8FB0E6; --afc:#F08A82; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1611; --surface:#16211A; --ink:#E6EDE7; --muted:#A3B3A8; --line:#2A3A30;
+  --field:#173F25; --field-ink:#EAF2EC; --nfc:#8FB0E6; --afc:#F08A82; color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Source Serif 4",Georgia,"Times New Roman",serif;font-size:1.0625rem;line-height:1.65}
+h1,h2,h3{font-family:"Barlow Condensed","Arial Narrow",Arial,sans-serif;line-height:1.05;margin:0}
+.wrap{max-width:46rem;margin:0 auto;padding:0 1.25rem}
+
+/* Hero: a strip of field with yard lines */
+.hero{background:var(--field);color:var(--field-ink);position:relative;overflow:hidden;padding:3.5rem 0 3rem}
+.hero::before{content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(90deg,transparent 0 calc(10% - 2px),rgba(255,255,255,.16) calc(10% - 2px) 10%);
+  pointer-events:none}
+.hero .wrap{position:relative}
+.hero h1{font-size:clamp(2.8rem,9vw,5rem);font-weight:800;letter-spacing:-.01em}
+.hero p{max-width:34rem;margin:1rem 0 0;font-size:1.1rem;opacity:.92}
+
+section{padding:2.75rem 0 1rem}
+.conf h2{font-size:2.4rem;font-weight:800}
+.nfc h2{color:var(--nfc)} .afc h2{color:var(--afc)}
+.lede{color:var(--muted);margin:.4rem 0 1.5rem}
+
+.winner{background:var(--surface);border-left:6px solid currentColor;padding:1.25rem 1.4rem;margin:0 0 1.75rem}
+.nfc .winner{color:var(--nfc)} .afc .winner{color:var(--afc)}
+.winner h3{font-size:1.9rem;font-weight:700}
+.winner .stadium{font-family:"Barlow Condensed",sans-serif;font-size:1.2rem;font-weight:500;margin:.15rem 0 .6rem}
+.winner p{color:var(--ink);margin:0}
+
+ol.rank{list-style:none;padding:0;margin:0 0 2rem;counter-reset:r}
+ol.rank li{counter-increment:r;display:grid;grid-template-columns:2.6rem 1fr;gap:.25rem 1rem;
+  padding:1rem 0;border-top:1px solid var(--line)}
+ol.rank li::before{content:counter(r);font-family:"Barlow Condensed",sans-serif;font-weight:800;
+  font-size:2.2rem;line-height:1;color:var(--muted);grid-row:span 2}
+ol.rank strong{font-family:"Barlow Condensed",sans-serif;font-size:1.3rem;font-weight:700}
+ol.rank span{color:var(--muted)}
+ol.rank p{margin:0;grid-column:2}
+
+h3.sub{font-size:1.5rem;font-weight:700;margin:1rem 0 .75rem}
+.table-scroll{overflow-x:auto;margin-bottom:1.5rem}
+table{width:100%;border-collapse:collapse;font-size:.98rem;min-width:30rem;background:var(--surface)}
+th,td{text-align:left;padding:.55rem .8rem;border-bottom:1px solid var(--line)}
+th{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:1.05rem}
+tr.div td{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:1.1rem;background:var(--bg);padding-top:1rem}
+.nfc tr.div td{color:var(--nfc)} .afc tr.div td{color:var(--afc)}
+
+.note{border-top:1px solid var(--line);color:var(--muted);font-size:.95rem;padding:1.5rem 0 3rem}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>Where visitors go to lose</h1>
+    <p>The toughest home fields in NFL history, conference by conference, weighing longevity, winning at home, noise, weather and altitude. Plus every current stadium.</p>
+  </div>
+</header>
+
+<main>
+<section class="conf nfc">
+  <div class="wrap">
+    <h2>NFC</h2>
+    <p class="lede">Cold, noise and old-school ownership culture separate the top of the conference.</p>
+
+    <div class="winner">
+      <h3>Green Bay Packers</h3>
+      <div class="stadium">Lambeau Field, since 1957</div>
+      <p>The oldest continuously used stadium in the league, decades of winning at home, brutal late-season cold and frozen turf, and a fan base that owns the team. No NFC venue matches its combination of longevity and hostility.</p>
+    </div>
+
+    <ol class="rank">
+      <li><strong>Packers</strong><span>Lambeau Field</span><p>The Ice Bowl and generations of December games that warm-weather teams dread.</p></li>
+      <li><strong>Seahawks</strong><span>Lumen Field</span><p>The loudest NFC building of the modern era. The 12th Man set crowd-noise records and visiting offenses pile up false starts.</p></li>
+      <li><strong>Saints</strong><span>Caesars Superdome</span><p>A dome traps the noise. The Brees and Payton years made it a nightmare, especially in prime time.</p></li>
+      <li><strong>Eagles</strong><span>Lincoln Financial Field, formerly Veterans Stadium</span><p>The conference's most famously hostile crowd. The Vet's rock-hard turf was a hazard of its own.</p></li>
+      <li><strong>Bears and 49ers</strong><span>Soldier Field; Candlestick Park</span><p>Chicago winters, and the 49ers' 1980s and '90s dynasty at Candlestick, earn a shared spot.</p></li>
+    </ol>
+
+    <h3 class="sub">Every NFC stadium</h3>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Team</th><th>Stadium</th><th>Location</th></tr></thead>
+        <tbody>
+          <tr class="div"><td colspan="3">NFC East</td></tr>
+          <tr><td>Dallas Cowboys</td><td>AT&amp;T Stadium</td><td>Arlington, TX</td></tr>
+          <tr><td>New York Giants</td><td>MetLife Stadium</td><td>East Rutherford, NJ</td></tr>
+          <tr><td>Philadelphia Eagles</td><td>Lincoln Financial Field</td><td>Philadelphia, PA</td></tr>
+          <tr><td>Washington Commanders</td><td>Northwest Stadium</td><td>Landover, MD</td></tr>
+          <tr class="div"><td colspan="3">NFC North</td></tr>
+          <tr><td>Chicago Bears</td><td>Soldier Field</td><td>Chicago, IL</td></tr>
+          <tr><td>Detroit Lions</td><td>Ford Field</td><td>Detroit, MI</td></tr>
+          <tr><td>Green Bay Packers</td><td>Lambeau Field</td><td>Green Bay, WI</td></tr>
+          <tr><td>Minnesota Vikings</td><td>U.S. Bank Stadium</td><td>Minneapolis, MN</td></tr>
+          <tr class="div"><td colspan="3">NFC South</td></tr>
+          <tr><td>Atlanta Falcons</td><td>Mercedes-Benz Stadium</td><td>Atlanta, GA</td></tr>
+          <tr><td>Carolina Panthers</td><td>Bank of America Stadium</td><td>Charlotte, NC</td></tr>
+          <tr><td>New Orleans Saints</td><td>Caesars Superdome</td><td>New Orleans, LA</td></tr>
+          <tr><td>Tampa Bay Buccaneers</td><td>Raymond James Stadium</td><td>Tampa, FL</td></tr>
+          <tr class="div"><td colspan="3">NFC West</td></tr>
+          <tr><td>Arizona Cardinals</td><td>State Farm Stadium</td><td>Glendale, AZ</td></tr>
+          <tr><td>Los Angeles Rams</td><td>SoFi Stadium</td><td>Inglewood, CA</td></tr>
+          <tr><td>San Francisco 49ers</td><td>Levi's Stadium</td><td>Santa Clara, CA</td></tr>
+          <tr><td>Seattle Seahawks</td><td>Lumen Field</td><td>Seattle, WA</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="conf afc">
+  <div class="wrap">
+    <h2>AFC</h2>
+    <p class="lede">Here the edge comes from physics as much as fans: thin air, deafening noise and lake-effect snow.</p>
+
+    <div class="winner">
+      <h3>Denver Broncos</h3>
+      <div class="stadium">Empower Field at Mile High, formerly Mile High Stadium</div>
+      <p>The only advantage in the league that is physical rather than emotional. At 5,280 feet, visiting players tire faster, especially in the fourth quarter, and Denver has posted one of the best home records in league history across both Mile High stadiums.</p>
+    </div>
+
+    <ol class="rank">
+      <li><strong>Broncos</strong><span>Empower Field at Mile High</span><p>Altitude wears opponents down regardless of crowd size or era.</p></li>
+      <li><strong>Chiefs</strong><span>GEHA Field at Arrowhead Stadium</span><p>Holds the Guinness record for loudest outdoor stadium, and the Mahomes era turned it into a near-fortress in January.</p></li>
+      <li><strong>Patriots</strong><span>Gillette Stadium, formerly Foxboro Stadium</span><p>The Brady and Belichick run produced one of the most dominant home stretches ever, plus plenty of snow games.</p></li>
+      <li><strong>Steelers</strong><span>Acrisure Stadium, formerly Three Rivers Stadium</span><p>Decades of consistent winning, a rabid crowd and notoriously tricky footing late in the season.</p></li>
+      <li><strong>Bills</strong><span>Highmark Stadium, Orchard Park</span><p>Lake Erie wind and snow plus one of the league's most devoted fan bases. The new Highmark Stadium opens a fresh chapter.</p></li>
+    </ol>
+
+    <h3 class="sub">Every AFC stadium</h3>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Team</th><th>Stadium</th><th>Location</th></tr></thead>
+        <tbody>
+          <tr class="div"><td colspan="3">AFC East</td></tr>
+          <tr><td>Buffalo Bills</td><td>Highmark Stadium (new, 2026)</td><td>Orchard Park, NY</td></tr>
+          <tr><td>Miami Dolphins</td><td>Hard Rock Stadium</td><td>Miami Gardens, FL</td></tr>
+          <tr><td>New England Patriots</td><td>Gillette Stadium</td><td>Foxborough, MA</td></tr>
+          <tr><td>New York Jets</td><td>MetLife Stadium</td><td>East Rutherford, NJ</td></tr>
+          <tr class="div"><td colspan="3">AFC North</td></tr>
+          <tr><td>Baltimore Ravens</td><td>M&amp;T Bank Stadium</td><td>Baltimore, MD</td></tr>
+          <tr><td>Cincinnati Bengals</td><td>Paycor Stadium</td><td>Cincinnati, OH</td></tr>
+          <tr><td>Cleveland Browns</td><td>Huntington Bank Field</td><td>Cleveland, OH</td></tr>
+          <tr><td>Pittsburgh Steelers</td><td>Acrisure Stadium</td><td>Pittsburgh, PA</td></tr>
+          <tr class="div"><td colspan="3">AFC South</td></tr>
+          <tr><td>Houston Texans</td><td>NRG Stadium</td><td>Houston, TX</td></tr>
+          <tr><td>Indianapolis Colts</td><td>Lucas Oil Stadium</td><td>Indianapolis, IN</td></tr>
+          <tr><td>Jacksonville Jaguars</td><td>EverBank Stadium</td><td>Jacksonville, FL</td></tr>
+          <tr><td>Tennessee Titans</td><td>Nissan Stadium</td><td>Nashville, TN</td></tr>
+          <tr class="div"><td colspan="3">AFC West</td></tr>
+          <tr><td>Denver Broncos</td><td>Empower Field at Mile High</td><td>Denver, CO</td></tr>
+          <tr><td>Kansas City Chiefs</td><td>GEHA Field at Arrowhead Stadium</td><td>Kansas City, MO</td></tr>
+          <tr><td>Las Vegas Raiders</td><td>Allegiant Stadium</td><td>Paradise, NV</td></tr>
+          <tr><td>Los Angeles Chargers</td><td>SoFi Stadium</td><td>Inglewood, CA</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="wrap note">
+  Rankings are an editorial judgment across each franchise's full history, not a single statistic. Stadium names reflect naming rights as of October 2026 and can change.
+</div>
+</main>
+</body>
+</html>
